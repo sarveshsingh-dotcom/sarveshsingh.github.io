@@ -107,10 +107,29 @@
     font-weight:400;
     font-size:clamp(2.6rem, 6vw, 4.1rem);
     line-height:1.04;
-    margin:0 0 1.1rem 0;
+    margin:0;
     max-width:13.5em;
     color:var(--ink);
+    overflow:hidden;
   }
+  .hero h1 .line{
+    display:block;
+    opacity:0;
+    transform:translateY(100%);
+    animation:lineRise .8s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero h1 .line:nth-child(1){animation-delay:.15s;}
+  .hero h1 .line:nth-child(2){animation-delay:.35s;}
+  @keyframes lineRise{to{opacity:1; transform:translateY(0);}}
+  .hero-rule{
+    display:block;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    margin:1rem 0 1.3rem;
+    animation:ruleGrow .5s ease forwards .75s;
+  }
+  @keyframes ruleGrow{to{width:64px;}}
   .hero .lede{
     font-size:1.14rem;
     color:var(--ink-soft);
@@ -144,25 +163,12 @@
   .btn-secondary:hover{background:var(--ink); color:var(--paper); transform:translateY(-1px);}
 
   /* ---------- Click feedback ---------- */
-  @keyframes ackGlow{
-    0%{box-shadow:0 0 0 0 rgba(92,100,64,0.45);}
-    70%{box-shadow:0 0 0 10px rgba(92,100,64,0);}
-    100%{box-shadow:0 0 0 0 rgba(92,100,64,0);}
-  }
-  @keyframes ackPop{
-    0%{transform:scale(1);}
-    35%{transform:scale(0.96);}
-    65%{transform:scale(1.03);}
-    100%{transform:scale(1);}
-  }
   @keyframes ackCheck{
     0%{opacity:0; transform:translate(2px,2px) scale(0.7);}
     20%{opacity:1; transform:translate(0,0) scale(1);}
     75%{opacity:1;}
     100%{opacity:0;}
   }
-  .ack-pop.acked{animation:ackPop .4s ease;}
-  .ack-glow.acked{animation:ackGlow .6s ease;}
   .ack-check{position:relative;}
   .ack-check.acked::after{
     content:"✓";
@@ -172,6 +178,23 @@
     font-weight:700;
     animation:ackCheck 1.1s ease;
   }
+
+  /* Battery-fill click feedback for real buttons */
+  .fillbtn{position:relative; overflow:hidden;}
+  .fillbtn .fill{
+    position:absolute; inset:0;
+    width:0%;
+    transition:width .65s cubic-bezier(.4,0,.2,1);
+  }
+  .fillbtn .label{position:relative; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; height:100%; transition:color .5s ease .1s;}
+  .fillbtn.filling .fill{width:100%;}
+  .btn.fillbtn .fill{background:var(--accent-deep);}
+  .btn-secondary.fillbtn .fill{background:var(--ink);}
+  .btn-secondary.fillbtn.filling .label{color:var(--paper);}
+  .icon-btn.fillbtn{transition:border-color .2s ease;}
+  .icon-btn.fillbtn .fill{background:var(--accent); border-radius:6px;}
+  .icon-btn.fillbtn .label{color:var(--ink);}
+  .icon-btn.fillbtn.filling .label{color:#fff;}
 
   /* ---------- Sections ---------- */
   section{max-width:calc(var(--maxw) + 3.2rem); margin:0 auto; padding:3.4rem 1.6rem;}
@@ -240,8 +263,29 @@
   .cert-row:first-child{border-top:1px solid var(--line);}
   .cert-row .name{max-width:29em;}
   .cert-row .meta{color:var(--ink-soft); font-size:0.85rem; white-space:nowrap; flex:none;}
-  .cert-link{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);}
-  .cert-link:hover{color:var(--accent); border-color:var(--accent);}
+  .cert-link{
+    color:var(--ink);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:0.32rem;
+  }
+  .cert-link:hover{color:var(--accent);}
+  .cert-link::after{
+    content:"";
+    width:11px; height:11px;
+    flex:none;
+    background-color:currentColor;
+    opacity:0.5;
+    -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17L17 7M17 7H9M17 7V15'/></svg>");
+    mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17L17 7M17 7H9M17 7V15'/></svg>");
+    -webkit-mask-size:contain;
+    mask-size:contain;
+    -webkit-mask-repeat:no-repeat;
+    mask-repeat:no-repeat;
+    transition:opacity .15s ease;
+  }
+  .cert-link:hover::after{opacity:1;}
 
   /* Awards */
   .award{display:flex; gap:0.8rem; margin-bottom:0.9rem;}
@@ -252,14 +296,40 @@
 
   /* Build note */
   .buildnote{
+    position:relative;
     background:var(--card);
     border:1px solid var(--line);
     border-radius:10px;
-    padding:1.6rem 1.8rem;
+    padding:2.1rem 2rem 1.9rem;
   }
-  .buildnote h2{font-size:1.3rem; margin-bottom:0.7rem;}
+  .buildnote-badge{
+    position:absolute; top:-20px; left:1.9rem;
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 8px rgba(36,26,23,0.2);
+  }
+  .buildnote-badge svg{width:19px; height:19px; stroke:#fff;}
+  .buildnote h2{font-size:1.3rem; margin:0.5rem 0 0;}
+  .buildnote h2::after{
+    content:"";
+    display:block;
+    width:38px; height:2px;
+    background:var(--gold);
+    margin:0.55rem 0 1.1rem;
+  }
   .buildnote p{font-size:0.95rem; color:var(--ink-soft); margin-bottom:0.7rem;}
   .buildnote p:last-child{margin-bottom:0;}
+  .buildnote p:first-of-type::first-letter{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size:2.5rem;
+    color:var(--accent);
+    float:left;
+    line-height:0.7;
+    padding:0.1rem 0.4rem 0 0;
+  }
 
   /* Contact / footer */
   .contact{
@@ -311,18 +381,21 @@
         <a href="#contact" data-nav>Contact</a>
       </nav>
       <div class="topbar-cta">
-        <a class="icon-btn ack-glow" href="mailto:sarveshsingh0203@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1.5"/></svg>
+        <a class="icon-btn fillbtn" href="mailto:sarveshsingh0203@gmail.com" aria-label="Email">
+          <span class="fill"></span>
+          <span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1.5"/></svg></span>
         </a>
-        <a class="icon-btn ack-glow" href="https://www.linkedin.com/in/sarvesh-kumar-singh-699475266" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 014 0V17M12 17v-7"/></svg>
+        <a class="icon-btn fillbtn" href="https://www.linkedin.com/in/sarvesh-kumar-singh-699475266" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="fill"></span>
+          <span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 014 0V17M12 17v-7"/></svg></span>
         </a>
       </div>
     </div>
   </div>
 
   <div class="hero" id="top">
-    <h1>Structured thinker,<br>curious builder.</h1>
+    <h1><span class="line">Structured thinker,</span><span class="line">curious builder.</span></h1>
+    <span class="hero-rule"></span>
     <p class="lede">I'm a Business Analyst who turns messy requirements, tickets, and spreadsheets into decisions people can act on. My background is in healthcare technology — but the toolkit (requirements analysis, stakeholder coordination, data reporting, process delivery) travels well, and I'm actively growing it into business analysis, data analytics, and broader business management work.</p>
     <div class="chips">
       <span class="chip">Business analysis</span>
@@ -331,8 +404,8 @@
       <span class="chip">Open to relocation</span>
     </div>
     <div class="cta-row">
-      <a class="btn btn-primary ack-pop ack-check" href="mailto:sarveshsingh0203@gmail.com">Email me</a>
-      <a class="btn btn-secondary ack-pop ack-check" href="Sarvesh_Kumar_Singh_Business_Analyst_Resume.pdf" download>Download resume</a>
+      <a class="btn btn-primary fillbtn" href="mailto:sarveshsingh0203@gmail.com"><span class="fill"></span><span class="label">Email me</span></a>
+      <a class="btn btn-secondary fillbtn" href="Sarvesh_Kumar_Singh_Business_Analyst_Resume.pdf" download><span class="fill"></span><span class="label">Download resume</span></a>
     </div>
   </div>
 
@@ -431,9 +504,8 @@
     <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-edf16d32-d895-4f98-a549-7b10d2788caf/" target="_blank" rel="noopener">Certified Electronic Health Records Specialist</a></span><span class="meta">Udemy, Sep 2025</span></div>
     <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://nptel.ac.in/noc/E_Certificate/NPTEL25MG58S63410196801383268" target="_blank" rel="noopener">Services Marketing: A Practical Approach</a></span><span class="meta">NPTEL, IIT Kharagpur, 2025</span></div>
     <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-481a0bb5-0689-476d-be83-2238f6b1e468/" target="_blank" rel="noopener">Healthcare 4.0 — Healthcare in the Industry 4.0</a></span><span class="meta">Udemy, Sep 2025</span></div>
-    <div class="cert-row"><span class="name">Medical Image Analysis</span><span class="meta">NPTEL, IIT Kharagpur, 2025</span></div>
     <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=21449%7CCR1215&frm=admin&qrscan=true" target="_blank" rel="noopener">Programme on Implementation of NABH Standards for Hospitals</a></span><span class="meta">QCI</span></div>
-    <div class="cert-row"><span class="name">EP**C Pro</span><span class="meta">Dec 2025</span></div>
+    <div class="cert-row"><span class="name">EP**C</span><span class="meta">Dec 2025</span></div>
   </section>
 
   <div class="divider"><hr></div>
@@ -449,6 +521,9 @@
 
   <section id="buildnote">
     <div class="buildnote">
+      <div class="buildnote-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 5.5L19 9l-5.2 1.5L12 16l-1.8-5.5L5 9l5.2-1.5z"/></svg>
+      </div>
       <h2>How this site came together</h2>
       <p>I don't come from a coding background. This site was designed and built with Claude, working from my resume and a lot of back-and-forth on what to keep, cut, and say differently.</p>
       <p>I'm low-code / no-code by training, but I like learning new tools quickly and going from "I don't know how" to "I shipped it." That's the same approach I bring to a new system, process, or industry at work — figure out the shape of the problem, then get to a working result.</p>
@@ -493,7 +568,15 @@
   }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
   sections.forEach(s => s && observer.observe(s));
 
-  document.querySelectorAll('.ack-pop, .ack-glow, .ack-check').forEach(el => {
+  document.querySelectorAll('.fillbtn').forEach(el => {
+    el.addEventListener('click', () => {
+      el.classList.remove('filling');
+      void el.offsetWidth;
+      el.classList.add('filling');
+      setTimeout(() => el.classList.remove('filling'), 1000);
+    });
+  });
+  document.querySelectorAll('.ack-check').forEach(el => {
     el.addEventListener('click', () => {
       el.classList.remove('acked');
       void el.offsetWidth;
