@@ -7,7 +7,7 @@
 <meta name="description" content="Sarvesh Kumar Singh — Business Analyst working across data, process, and delivery, open to business analysis, data analytics, and business management roles.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F5EFE5;
@@ -28,7 +28,7 @@
     margin:0;
     background:var(--paper);
     color:var(--ink);
-    font-family:'Libre Franklin', sans-serif;
+    font-family:'Karla', sans-serif;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
@@ -61,7 +61,7 @@
     color:#fff;
     border-radius:8px;
     display:flex; align-items:center; justify-content:center;
-    font-family:'Instrument Serif', serif;
+    font-family:'Fraunces', serif;
     font-style:italic;
     font-size:1.05rem;
     flex:none;
@@ -102,7 +102,7 @@
   }
   @keyframes rise{to{opacity:1; transform:translateY(0);}}
   .hero h1{
-    font-family:'Instrument Serif', serif;
+    font-family:'Fraunces', serif;
     font-style:italic;
     font-weight:400;
     font-size:clamp(2.6rem, 6vw, 4.1rem);
@@ -147,7 +147,7 @@
   }
   .cta-row{display:flex; gap:0.9rem; flex-wrap:wrap;}
   .btn{
-    font-family:'Libre Franklin', sans-serif;
+    font-family:'Karla', sans-serif;
     font-size:0.92rem;
     font-weight:600;
     padding:0.75rem 1.4rem;
@@ -199,7 +199,7 @@
   /* ---------- Sections ---------- */
   section{max-width:calc(var(--maxw) + 3.2rem); margin:0 auto; padding:3.4rem 1.6rem;}
   section h2{
-    font-family:'Instrument Serif', serif;
+    font-family:'Fraunces', serif;
     font-style:italic;
     font-weight:400;
     font-size:1.9rem;
@@ -229,6 +229,19 @@
   .job ul li::before{
     content:"—"; position:absolute; left:0; top:0; color:var(--accent);
   }
+  .current-tag{
+    display:inline-block;
+    font-size:0.68rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.03em;
+    color:#fff; background:var(--accent);
+    padding:0.2rem 0.5rem; border-radius:20px;
+    vertical-align:middle; margin-left:0.5rem;
+  }
+  .current-tag.internship-tag{background:var(--taupe);}
+  .flow-doc-note{
+    font-size:0.82rem; color:var(--ink-soft);
+    font-style:italic; margin-top:1rem;
+  }
   .badge{
     display:inline-block; margin-top:1rem;
     font-size:0.78rem; color:var(--olive);
@@ -251,7 +264,7 @@
   .skill-card p{font-size:0.9rem; color:var(--ink-soft); margin:0;}
 
   /* Education */
-  .edu h3{font-size:1.1rem; font-family:'Libre Franklin',sans-serif; font-weight:600; margin:0 0 0.3rem 0;}
+  .edu h3{font-size:1.1rem; font-family:'Karla',sans-serif; font-weight:600; margin:0 0 0.3rem 0;}
   .edu .org{font-size:0.92rem; color:var(--ink-soft); margin-bottom:0.9rem;}
   .edu .leadership{font-size:0.9rem; color:var(--ink-soft); max-width:36em;}
   .langs{display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.5rem;}
@@ -266,15 +279,14 @@
   .cert-link{
     color:var(--ink);
     text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:0.32rem;
   }
   .cert-link:hover{color:var(--accent);}
   .cert-link::after{
     content:"";
+    display:inline-block;
     width:11px; height:11px;
-    flex:none;
+    margin-left:0.3rem;
+    vertical-align:-1px;
     background-color:currentColor;
     opacity:0.5;
     -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17L17 7M17 7H9M17 7V15'/></svg>");
@@ -322,7 +334,7 @@
   .buildnote p{font-size:0.95rem; color:var(--ink-soft); margin-bottom:0.7rem;}
   .buildnote p:last-child{margin-bottom:0;}
   .buildnote p:first-of-type::first-letter{
-    font-family:'Instrument Serif', serif;
+    font-family:'Fraunces', serif;
     font-style:italic;
     font-size:2.5rem;
     color:var(--accent);
@@ -362,9 +374,213 @@
     .cert-row{flex-direction:column; gap:0.2rem;}
     .topbar-name span{display:none;}
   }
+
+  /* ---------- Scroll progress ---------- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px;
+    width:0%; background:var(--accent);
+    z-index:40; transition:width .1s linear;
+  }
+
+  /* ---------- Scroll to top ---------- */
+  .scroll-top{
+    position:fixed; right:22px; bottom:22px;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper);
+    border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transform:translateY(8px);
+    transition:opacity .25s ease, transform .25s ease, background .15s ease;
+    z-index:35;
+    box-shadow:0 3px 10px rgba(36,26,23,0.25);
+  }
+  .scroll-top.visible{opacity:1; pointer-events:auto; transform:translateY(0);}
+  .scroll-top:hover{background:var(--accent);}
+  .scroll-top svg{width:18px; height:18px;}
+
+  /* ---------- Role toggle ---------- */
+  .role-toggle{
+    display:flex; align-items:center; flex-wrap:wrap;
+    gap:0.5rem; margin-bottom:0.9rem;
+  }
+  .role-toggle-label{font-size:0.82rem; color:var(--ink-soft); margin-right:0.2rem;}
+  .role-btn{
+    font-family:'Karla', sans-serif;
+    font-size:0.82rem; font-weight:500;
+    padding:0.4rem 0.8rem;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .role-btn:hover{border-color:var(--accent); color:var(--ink);}
+  .role-btn.active{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .role-desc{
+    font-size:0.95rem; color:var(--ink-soft);
+    max-width:34em; margin-bottom:1.7rem;
+    min-height:1.6em;
+  }
+
+  /* ---------- Stats strip ---------- */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:1.6rem; text-align:center;
+  }
+  .stat-num{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:2.5rem;
+    color:var(--accent);
+    line-height:1;
+  }
+  .stat-label{
+    display:block; margin-top:0.5rem;
+    font-size:0.8rem; color:var(--ink-soft);
+    max-width:10em; margin-left:auto; margin-right:auto;
+  }
+
+  /* ---------- Process flow (horizontal pipeline) ---------- */
+  .flow{margin-top:2.4rem;}
+  .flow-title{
+    font-size:0.95rem; font-weight:600; color:var(--ink);
+    margin-bottom:2.2rem;
+  }
+  .pipeline{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    padding-top:2px;
+  }
+  .pipeline-track{
+    position:absolute; top:19px; left:0; right:0; height:2px;
+    background:var(--line); z-index:0;
+  }
+  .pipeline-fill{
+    position:absolute; top:19px; left:0; width:0%; height:2px;
+    background:var(--accent); z-index:0;
+    transition:width 1.4s cubic-bezier(.3,.6,.3,1);
+  }
+  .pipeline-fill.filled{width:100%;}
+  .pipeline-step{
+    position:relative; z-index:1;
+    display:flex; flex-direction:column; align-items:center;
+    flex:1; text-align:center; padding:0 0.35rem;
+  }
+  .pipeline-node{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.85rem; font-weight:700;
+    margin-bottom:0.8rem;
+    box-shadow:0 0 0 5px var(--paper);
+  }
+  .pipeline-step p{margin:0; font-size:0.8rem; font-weight:600; color:var(--ink); line-height:1.3;}
+  .pipeline-step p span{display:block; margin-top:0.3rem; font-size:0.7rem; font-weight:400; color:var(--ink-soft);}
+
+  /* ---------- Case study (tag switcher) ---------- */
+  .case-tabs{display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem;}
+  .case-tab{
+    font-family:'Karla', sans-serif;
+    font-size:0.82rem; font-weight:500;
+    padding:0.42rem 0.85rem;
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .case-tab:hover{border-color:var(--accent); color:var(--ink);}
+  .case-tab.active{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .case-panel{
+    opacity:0; animation:caseFadeIn .4s ease forwards;
+  }
+  @keyframes caseFadeIn{to{opacity:1;}}
+  .case-study-title{
+    font-family:'Karla', sans-serif;
+    font-size:1.08rem; font-weight:600;
+    color:var(--ink); margin-bottom:1rem;
+  }
+  .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem;}
+  .case-block{
+    background:var(--card);
+    border-top:3px solid var(--c);
+    border-radius:6px;
+    padding:1.1rem 1.2rem;
+    box-shadow:0 1px 2px rgba(36,26,23,0.05);
+  }
+  .case-tag{
+    display:inline-block;
+    font-size:0.72rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.04em;
+    color:var(--c); margin-bottom:0.55rem;
+  }
+  .case-block p{font-size:0.9rem; color:var(--ink-soft); margin:0;}
+
+  /* ---------- Skills layout + radar ---------- */
+  .skills-layout{display:grid; grid-template-columns:260px 1fr; gap:2rem; align-items:start;}
+  .radar-wrap{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:1rem;
+  }
+  .radar-svg{
+    width:100%; height:auto; display:block;
+    opacity:0; transform:scale(0.85);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .radar-svg.visible{opacity:1; transform:scale(1);}
+  .radar-caption{font-size:0.74rem; color:var(--ink-soft); text-align:center; margin-top:0.5rem;}
+
+  /* ---------- Certification cards ---------- */
+  .cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:0.9rem;}
+  .cert-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1rem 1.1rem;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .cert-card:hover{box-shadow:0 4px 14px rgba(36,26,23,0.09); transform:translateY(-2px);}
+  .cert-icon{
+    width:26px; height:26px;
+    border-radius:6px;
+    background:var(--c);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.72rem; font-weight:700;
+    margin-bottom:0.7rem;
+  }
+  .cert-card .name{display:block; font-size:0.9rem; font-weight:500; margin-bottom:0.35rem; line-height:1.4;}
+  .cert-card .meta{display:block; font-size:0.8rem; color:var(--ink-soft);}
+
+  @media (max-width:780px){
+    .skills-layout{grid-template-columns:1fr;}
+    .case-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    .pipeline{flex-direction:column; align-items:flex-start;}
+    .pipeline-track, .pipeline-fill{top:0; bottom:0; left:18px; right:auto; width:2px; height:auto;}
+    .pipeline-fill{height:0%; width:2px; transition:height 1.4s cubic-bezier(.3,.6,.3,1);}
+    .pipeline-fill.filled{height:100%;}
+    .pipeline-step{flex-direction:row; align-items:center; text-align:left; width:100%; margin-bottom:1.6rem; gap:1rem; padding:0;}
+    .pipeline-step:last-child{margin-bottom:0;}
+    .pipeline-node{margin-bottom:0; flex:none;}
+  }
+  @media (max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .cert-grid{grid-template-columns:1fr;}
+    .scroll-top{right:14px; bottom:14px;}
+  }
 </style>
 </head>
 <body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <div class="topbar">
     <div class="topbar-inner">
@@ -375,6 +591,7 @@
       <nav aria-label="Section navigation">
         <a href="#about" data-nav>About</a>
         <a href="#experience" data-nav>Experience</a>
+        <a href="#casestudy" data-nav>Case Studies</a>
         <a href="#skills" data-nav>Skills</a>
         <a href="#education" data-nav>Education</a>
         <a href="#certifications" data-nav>Certs</a>
@@ -411,6 +628,18 @@
 
   <div class="divider"><hr></div>
 
+  <section id="roleview">
+    <div class="role-toggle" id="roleToggle">
+      <span class="role-toggle-label">Viewing as:</span>
+      <button class="role-btn active" data-role="ba" type="button">Business Analyst</button>
+      <button class="role-btn" data-role="da" type="button">Data Analyst</button>
+      <button class="role-btn" data-role="pmo" type="button">PMO &amp; Delivery</button>
+    </div>
+    <p class="role-desc" id="roleDesc">Structured requirements, clear documentation, and stakeholder-ready reporting — the daily rhythm of business analysis.</p>
+  </section>
+
+  <div class="divider"><hr></div>
+
   <section id="about" class="about">
     <div class="about-rule"></div>
     <div>
@@ -421,12 +650,21 @@
 
   <div class="divider"><hr></div>
 
+  <section id="stats" class="stats">
+    <div class="stat"><span class="stat-num" data-target="1" data-suffix="+">0</span><span class="stat-label">Year in healthcare tech &amp; ops</span></div>
+    <div class="stat"><span class="stat-num stat-static">Top 10</span><span class="stat-label">One of the Top 10 US healthcare chains — current client</span></div>
+    <div class="stat"><span class="stat-num" data-target="2" data-suffix="">0</span><span class="stat-label">Spot Awards at Deloitte</span></div>
+    <div class="stat"><span class="stat-num" data-target="10" data-suffix="">0</span><span class="stat-label">Certifications completed</span></div>
+  </section>
+
+  <div class="divider"><hr></div>
+
   <section id="experience">
     <h2>Where I've worked</h2>
 
     <div class="job">
       <div class="job-head">
-        <h3>Associate Analyst, Deloitte USI</h3>
+        <h3>Associate Analyst, Deloitte USI <span class="current-tag">Current role</span></h3>
         <span class="job-date">Sept 2025 — Present</span>
       </div>
       <p class="job-org">Hyderabad, India · supporting a large-scale technology client</p>
@@ -442,7 +680,7 @@
 
     <div class="job">
       <div class="job-head">
-        <h3>Operations Intern, ReyNiKan Healthcare Pvt. Ltd.</h3>
+        <h3>Operations Intern, ReyNiKan Healthcare Pvt. Ltd. <span class="current-tag internship-tag">Internship</span></h3>
         <span class="job-date">Apr 2024 — Jul 2024</span>
       </div>
       <p class="job-org">Delhi, India</p>
@@ -452,28 +690,154 @@
         <li>Worked directly with clients across 5+ on-site assessments, delivering tailored quality-improvement solutions.</li>
       </ul>
     </div>
+
+    <div class="flow">
+      <h3 class="flow-title">How a change moves from ticket to production</h3>
+      <div class="pipeline" id="pipelineFlow">
+        <div class="pipeline-track"></div>
+        <div class="pipeline-fill" id="pipelineFill"></div>
+        <div class="pipeline-step"><span class="pipeline-node">1</span><p>Ticket raised<span>Intake logged &amp; triaged</span></p></div>
+        <div class="pipeline-step"><span class="pipeline-node">2</span><p>Build scope<span>Requirements defined</span></p></div>
+        <div class="pipeline-step"><span class="pipeline-node">3</span><p>Build<span>Configuration implemented</span></p></div>
+        <div class="pipeline-step"><span class="pipeline-node">4</span><p>Peer review<span>Checked for consistency</span></p></div>
+        <div class="pipeline-step"><span class="pipeline-node">5</span><p>UAT testing &amp; validation<span>Verified against requirements</span></p></div>
+        <div class="pipeline-step"><span class="pipeline-node">6</span><p>Go-live<span>Released to production</span></p></div>
+        <div class="pipeline-step"><span class="pipeline-node">7</span><p>Post go-live review<span>Final validation &amp; sign-off</span></p></div>
+      </div>
+      <p class="flow-doc-note">Documentation runs alongside every step — scope notes, test logs, and sign-off records.</p>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="casestudy">
+    <h2>Case studies</h2>
+
+    <div class="case-tabs" id="caseTabs">
+      <button class="case-tab active" data-case="0" type="button">Syndrome-tracking</button>
+      <button class="case-tab" data-case="1" type="button">Recurring tickets</button>
+      <button class="case-tab" data-case="2" type="button">UAT catch</button>
+      <button class="case-tab" data-case="3" type="button">Clean migration</button>
+      <button class="case-tab" data-case="4" type="button">Stakeholder alignment</button>
+    </div>
+
+    <div class="case-panel" data-case-panel="0">
+      <h3 class="case-study-title">Streamlining syndrome-tracking in the EHR</h3>
+      <div class="case-grid">
+        <div class="case-block" style="--c:var(--taupe)">
+          <span class="case-tag">Problem</span>
+          <p>A hospital's clinical team flagged a recurring friction point: tracking specific syndrome patterns inside their EHR meant pulling and reconciling several manual reports, slowing down day-to-day clinical visibility.</p>
+        </div>
+        <div class="case-block" style="--c:var(--olive)">
+          <span class="case-tag">Approach</span>
+          <p>We opened a direct line with the hospital's clinical informatics team to validate the request and see how peer provider hospitals handled similar tracking, then partnered with the EHR development team to assess technical feasibility. Once the build was confirmed viable, we worked through the clinical implications before implementing the configuration and validating it against the existing workflow.</p>
+        </div>
+        <div class="case-block" style="--c:var(--accent)">
+          <span class="case-tag">Result</span>
+          <p>The hospital moved from several disconnected manual reports to one streamlined workflow for syndrome tracking inside their EHR — cutting reporting overhead and giving clinical staff faster visibility into patient patterns.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-panel" data-case-panel="1" hidden>
+      <h3 class="case-study-title">Finding the root cause behind recurring tickets</h3>
+      <div class="case-grid">
+        <div class="case-block" style="--c:var(--taupe)">
+          <span class="case-tag">Problem</span>
+          <p>Tickets rarely arrive labeled as symptoms of something bigger — a handful of similar-looking ITSM tickets can read as unrelated one-offs until someone actually looks for the pattern.</p>
+        </div>
+        <div class="case-block" style="--c:var(--olive)">
+          <span class="case-tag">Approach</span>
+          <p>When several tickets point in the same direction, I trace them back to a shared root cause instead of closing each in isolation, then take the fix through peer review so it holds up across the environment rather than patching the one ticket in front of me.</p>
+        </div>
+        <div class="case-block" style="--c:var(--accent)">
+          <span class="case-tag">Result</span>
+          <p>Recurring ticket volume drops, because the underlying issue gets resolved once, properly, instead of being patched repeatedly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-panel" data-case-panel="2" hidden>
+      <h3 class="case-study-title">Catching a requirement gap before go-live</h3>
+      <div class="case-grid">
+        <div class="case-block" style="--c:var(--taupe)">
+          <span class="case-tag">Problem</span>
+          <p>A configuration change can look release-ready on paper and still miss a specific business requirement that only surfaces once it's actually run against real workflows.</p>
+        </div>
+        <div class="case-block" style="--c:var(--olive)">
+          <span class="case-tag">Approach</span>
+          <p>I run structured, workflow-level UAT before anything ships — walking each change through the business requirement it's meant to satisfy, not just a technical checklist — and flag mismatches before they reach production.</p>
+        </div>
+        <div class="case-block" style="--c:var(--accent)">
+          <span class="case-tag">Result</span>
+          <p>Gaps get caught and corrected pre-release, protecting end users from disruptions that would otherwise only surface after go-live.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-panel" data-case-panel="3" hidden>
+      <h3 class="case-study-title">Keeping a cross-environment migration clean</h3>
+      <div class="case-grid">
+        <div class="case-block" style="--c:var(--taupe)">
+          <span class="case-tag">Problem</span>
+          <p>Moving a batch of build and configuration changes across environments is where small inconsistencies quietly creep in — one missed step in one environment can undo hours of work in another.</p>
+        </div>
+        <div class="case-block" style="--c:var(--olive)">
+          <span class="case-tag">Approach</span>
+          <p>I document each migration in Excel as it happens, using AI tools to speed up the reporting, so every change is traceable across environments and nothing gets left behind or duplicated.</p>
+        </div>
+        <div class="case-block" style="--c:var(--accent)">
+          <span class="case-tag">Result</span>
+          <p>Migrations land clean, with a documented trail that makes any later audit or rollback straightforward.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-panel" data-case-panel="4" hidden>
+      <h3 class="case-study-title">Aligning clinical and technical stakeholders on one build</h3>
+      <div class="case-grid">
+        <div class="case-block" style="--c:var(--taupe)">
+          <span class="case-tag">Problem</span>
+          <p>Clinical and technical stakeholders often want different things from the same system change — clinical teams focused on patient workflow, technical teams focused on what's actually feasible to build.</p>
+        </div>
+        <div class="case-block" style="--c:var(--olive)">
+          <span class="case-tag">Approach</span>
+          <p>I sit between both sides, translating clinical intent into technical scope and technical constraints back into terms clinical stakeholders can act on, until both groups are signing off on the same shared understanding.</p>
+        </div>
+        <div class="case-block" style="--c:var(--accent)">
+          <span class="case-tag">Result</span>
+          <p>The final build reflects what clinical teams actually need, without asking the technical team to build something unworkable.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div class="divider"><hr></div>
 
   <section id="skills">
     <h2>What I bring</h2>
-    <div class="skill-grid">
-      <div class="skill-card" style="--c:var(--accent)">
-        <h3>Business &amp; data analysis</h3>
-        <p>Requirements gathering, reporting, and analysis using Excel, SQL, Power BI, and Python.</p>
+    <div class="skills-layout">
+      <div class="radar-wrap">
+        <svg id="radarChart" class="radar-svg" viewBox="0 0 300 300"></svg>
+        <p class="radar-caption">Self-rated, weighted by day-to-day use</p>
       </div>
-      <div class="skill-card" style="--c:var(--olive)">
-        <h3>Process, delivery &amp; PMO</h3>
-        <p>Process documentation, ITSM and incident management, UAT coordination, project and PMO support.</p>
-      </div>
-      <div class="skill-card" style="--c:var(--taupe)">
-        <h3>Stakeholders &amp; communication</h3>
-        <p>Cross-functional coordination, client-facing collaboration, and adapting quickly across teams and domains.</p>
-      </div>
-      <div class="skill-card" style="--c:var(--gold)">
-        <h3>AI-augmented workflow</h3>
-        <p>Claude Skills and Claude Cowork, used daily to speed up analysis, testing, and documentation.</p>
+      <div class="skill-grid" data-skillgrid>
+        <div class="skill-card" style="--c:var(--accent)" data-roles="ba da">
+          <h3>Business &amp; data analysis</h3>
+          <p>Advanced Excel and MS Office (Word, PowerPoint, Outlook) for day-to-day reporting; working knowledge of Power BI; SQL fundamentals and Python I'm actively building on.</p>
+        </div>
+        <div class="skill-card" style="--c:var(--olive)" data-roles="pmo">
+          <h3>Process, delivery &amp; PMO</h3>
+          <p>Process documentation, ITSM and incident management, UAT coordination, project and PMO support.</p>
+        </div>
+        <div class="skill-card" style="--c:var(--taupe)" data-roles="ba">
+          <h3>Soft skills &amp; collaboration</h3>
+          <p>Clear communication and presentation, structured problem-solving, adaptability across teams and domains, and time management under competing priorities — alongside day-to-day cross-functional and client-facing coordination.</p>
+        </div>
+        <div class="skill-card" style="--c:var(--gold)" data-roles="da pmo">
+          <h3>AI-augmented workflow</h3>
+          <p>Claude Skills and Claude Cowork, used daily to speed up analysis, testing, and documentation.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -496,16 +860,58 @@
 
   <section id="certifications">
     <h2>Certifications</h2>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.credly.com/badges/42c7517a-7406-4537-914d-71b2f0fda765" target="_blank" rel="noopener">Claude CCAO-F Certified; AI Fluency Framework &amp; Foundations; Claude Code in Action; Claude Code 101; Claude 101</a></span><span class="meta">Anthropic, 2026</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://admin.skillindiadigital.gov.in/documentverificationbyQR?content=P0NhbmRpZGF0ZSBOYW1lID0gU0FSVkVTSCBLVU1BUiBTSU5HSCYmQ2FuZGlkYXRlIElkID0gQ0FOXzM3MTYwNDQ0JiZUUCBJZCA9IFRQMTY3NjIxJiZUQyBOYW1lID0gSU5URVJOU0hBTEEgVFJBSU5JTkdTJiZCYXRjaElkID0gMzMxNTAwNyYmRG9jdW1lbnQgSUQgPSBKTFAwNlJRNVBBTE1RNlpFJiZUQyBBZGRyZXNzID0gQi02MTAmJlVOSVRFQ0ggQlVTSU5FU1MgWk9ORSYmU09VVEggQ0lUWSBJSSYmU0VDLTUwLTEyMjAxOC4mJkRvY3VtZW50ID0gY2VydGlmaWNhdGUmJklzc3VhbmNlIERhdGUgPSAwNi8wNS8yMDI1" target="_blank" rel="noopener">Business Analytics</a></span><span class="meta">NSDC / IIT-Madras Pravartak, 2025</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=27630%7CCR1142&frm=admin&qrscan=true" target="_blank" rel="noopener">Intro to Project Management: Principles &amp; Practices</a></span><span class="meta">QCI-NABET, 2024</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-d663df8a-343f-4786-be8e-6de799932ca8/" target="_blank" rel="noopener">Revenue Cycle and Healthcare Finance — Rev Cycle Ready</a></span><span class="meta">Udemy, Sep 2025</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-b7e49f1a-c0f5-470d-94f3-79b510714361/" target="_blank" rel="noopener">CompTIA Healthcare IT</a></span><span class="meta">Udemy, Sep 2025</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-edf16d32-d895-4f98-a549-7b10d2788caf/" target="_blank" rel="noopener">Certified Electronic Health Records Specialist</a></span><span class="meta">Udemy, Sep 2025</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://nptel.ac.in/noc/E_Certificate/NPTEL25MG58S63410196801383268" target="_blank" rel="noopener">Services Marketing: A Practical Approach</a></span><span class="meta">NPTEL, IIT Kharagpur, 2025</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-481a0bb5-0689-476d-be83-2238f6b1e468/" target="_blank" rel="noopener">Healthcare 4.0 — Healthcare in the Industry 4.0</a></span><span class="meta">Udemy, Sep 2025</span></div>
-    <div class="cert-row"><span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=21449%7CCR1215&frm=admin&qrscan=true" target="_blank" rel="noopener">Programme on Implementation of NABH Standards for Hospitals</a></span><span class="meta">QCI</span></div>
-    <div class="cert-row"><span class="name">EP**C</span><span class="meta">Dec 2025</span></div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--accent)">A</div>
+        <span class="name"><a class="cert-link ack-check" href="https://www.credly.com/badges/42c7517a-7406-4537-914d-71b2f0fda765" target="_blank" rel="noopener">Claude CCAO-F Certified; AI Fluency Framework &amp; Foundations; Claude Code in Action; Claude Code 101; Claude 101</a></span>
+        <span class="meta">Anthropic, 2026</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--gold)">N</div>
+        <span class="name"><a class="cert-link ack-check" href="https://admin.skillindiadigital.gov.in/documentverificationbyQR?content=P0NhbmRpZGF0ZSBOYW1lID0gU0FSVkVTSCBLVU1BUiBTSU5HSCYmQ2FuZGlkYXRlIElkID0gQ0FOXzM3MTYwNDQ0JiZUUCBJZCA9IFRQMTY3NjIxJiZUQyBOYW1lID0gSU5URVJOU0hBTEEgVFJBSU5JTkdTJiZCYXRjaElkID0gMzMxNTAwNyYmRG9jdW1lbnQgSUQgPSBKTFAwNlJRNVBBTE1RNlpFJiZUQyBBZGRyZXNzID0gQi02MTAmJlVOSVRFQ0ggQlVTSU5FU1MgWk9ORSYmU09VVEggQ0lUWSBJSSYmU0VDLTUwLTEyMjAxOC4mJkRvY3VtZW50ID0gY2VydGlmaWNhdGUmJklzc3VhbmNlIERhdGUgPSAwNi8wNS8yMDI1" target="_blank" rel="noopener">Business Analytics</a></span>
+        <span class="meta">NSDC / IIT-Madras Pravartak, 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--olive)">Q</div>
+        <span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=27630%7CCR1142&frm=admin&qrscan=true" target="_blank" rel="noopener">Intro to Project Management: Principles &amp; Practices</a></span>
+        <span class="meta">QCI-NABET, 2024</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--taupe)">U</div>
+        <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-d663df8a-343f-4786-be8e-6de799932ca8/" target="_blank" rel="noopener">Revenue Cycle and Healthcare Finance — Rev Cycle Ready</a></span>
+        <span class="meta">Udemy, Sep 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--accent)">U</div>
+        <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-b7e49f1a-c0f5-470d-94f3-79b510714361/" target="_blank" rel="noopener">CompTIA Healthcare IT</a></span>
+        <span class="meta">Udemy, Sep 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--gold)">U</div>
+        <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-edf16d32-d895-4f98-a549-7b10d2788caf/" target="_blank" rel="noopener">Certified Electronic Health Records Specialist</a></span>
+        <span class="meta">Udemy, Sep 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--olive)">N</div>
+        <span class="name"><a class="cert-link ack-check" href="https://nptel.ac.in/noc/E_Certificate/NPTEL25MG58S63410196801383268" target="_blank" rel="noopener">Services Marketing: A Practical Approach</a></span>
+        <span class="meta">NPTEL, IIT Kharagpur, 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--taupe)">U</div>
+        <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-481a0bb5-0689-476d-be83-2238f6b1e468/" target="_blank" rel="noopener">Healthcare 4.0 — Healthcare in the Industry 4.0</a></span>
+        <span class="meta">Udemy, Sep 2025</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--accent)">Q</div>
+        <span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=21449%7CCR1215&frm=admin&qrscan=true" target="_blank" rel="noopener">Programme on Implementation of NABH Standards for Hospitals</a></span>
+        <span class="meta">QCI</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" style="--c:var(--taupe)">E</div>
+        <span class="name">EP**C</span>
+        <span class="meta">Dec 2025</span>
+      </div>
+    </div>
   </section>
 
   <div class="divider"><hr></div>
@@ -527,6 +933,7 @@
       <h2>How this site came together</h2>
       <p>I don't come from a coding background. This site was designed and built with Claude, working from my resume and a lot of back-and-forth on what to keep, cut, and say differently.</p>
       <p>I'm low-code / no-code by training, but I like learning new tools quickly and going from "I don't know how" to "I shipped it." That's the same approach I bring to a new system, process, or industry at work — figure out the shape of the problem, then get to a working result.</p>
+      <p>While you're here, it's worth poking at the site itself — the "Viewing as" toggle near the top, the skills chart, and the process flow above are all part of the same build, not just decoration.</p>
     </div>
   </section>
 
@@ -551,6 +958,10 @@
     </div>
   </section>
   <footer>Sarvesh Kumar Singh · Hyderabad, India</footer>
+
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
 
 <script>
   const links = document.querySelectorAll('.topbar nav a[data-nav]');
@@ -584,6 +995,154 @@
       setTimeout(() => el.classList.remove('acked'), 1200);
     });
   });
+
+  /* ---- Scroll progress bar + scroll-to-top button ---- */
+  const progressBar = document.getElementById('scrollProgress');
+  const topBtn = document.getElementById('scrollTopBtn');
+  function onScroll(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if(progressBar) progressBar.style.width = pct + '%';
+    if(topBtn){
+      if(scrollTop > 480) topBtn.classList.add('visible');
+      else topBtn.classList.remove('visible');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if(topBtn){
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  /* ---- Role-based view toggle ---- */
+  const roleBtns = document.querySelectorAll('.role-btn');
+  const roleDesc = document.getElementById('roleDesc');
+  const roleCopy = {
+    ba: "Structured requirements, clear documentation, and stakeholder-ready reporting — the daily rhythm of business analysis.",
+    da: "Excel and Power BI turned into decision-ready reporting, with SQL fundamentals and Python I'm deliberately building on — data analysis grounded in what I use daily.",
+    pmo: "ITSM coordination, UAT validation, and structured delivery across environments — the operational core of PMO support."
+  };
+  roleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      roleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const role = btn.dataset.role;
+      if(roleDesc) roleDesc.textContent = roleCopy[role] || '';
+      document.querySelectorAll('[data-skillgrid] .skill-card').forEach(card => {
+        const roles = (card.dataset.roles || '').split(' ');
+        card.style.boxShadow = roles.includes(role) ? '0 0 0 2px var(--c), 0 3px 10px rgba(36,26,23,0.1)' : '';
+      });
+    });
+  });
+
+  /* ---- Animated stats count-up ---- */
+  const statNums = document.querySelectorAll('.stat-num:not(.stat-static)');
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      if(el.dataset.done) return;
+      el.dataset.done = '1';
+      const target = parseInt(el.dataset.target, 10) || 0;
+      const suffix = el.dataset.suffix || '';
+      const duration = 1100;
+      const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + (progress >= 1 ? suffix : '');
+        if(progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      statsObserver.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  statNums.forEach(el => statsObserver.observe(el));
+
+  /* ---- Skills radar chart ---- */
+  function buildRadar(){
+    const svg = document.getElementById('radarChart');
+    if(!svg) return;
+    const data = [
+      { label: 'Excel', value: 4 },
+      { label: 'MS Office', value: 4 },
+      { label: 'Power BI', value: 4 },
+      { label: 'SQL', value: 3 },
+      { label: 'Python', value: 2 },
+      { label: 'Stakeholders', value: 4 },
+      { label: 'Process/PMO', value: 4 }
+    ];
+    const cx = 150, cy = 150, maxR = 100, levels = 5;
+    const n = data.length;
+    const angle = i => (Math.PI * 2 * i / n) - Math.PI / 2;
+    const pt = (i, r) => [cx + r * Math.cos(angle(i)), cy + r * Math.sin(angle(i))];
+    let out = '';
+    for(let lvl = 1; lvl <= levels; lvl++){
+      const r = maxR * (lvl / levels);
+      const pts = data.map((d, i) => pt(i, r).join(',')).join(' ');
+      out += '<polygon points="' + pts + '" fill="none" stroke="#E3D7C7" stroke-width="1"/>';
+    }
+    data.forEach((d, i) => {
+      const [x, y] = pt(i, maxR);
+      out += '<line x1="' + cx + '" y1="' + cy + '" x2="' + x + '" y2="' + y + '" stroke="#E3D7C7" stroke-width="1"/>';
+      const [lx, ly] = pt(i, maxR + 24);
+      out += '<text x="' + lx + '" y="' + ly + '" font-size="10.5" font-family="Karla, sans-serif" fill="#6E5C51" text-anchor="middle" dominant-baseline="middle">' + d.label + '</text>';
+    });
+    const dataPts = data.map((d, i) => pt(i, maxR * (d.value / levels)).join(',')).join(' ');
+    out += '<polygon points="' + dataPts + '" fill="#7A2A38" fill-opacity="0.18" stroke="#7A2A38" stroke-width="2"/>';
+    data.forEach((d, i) => {
+      const [x, y] = pt(i, maxR * (d.value / levels));
+      out += '<circle cx="' + x + '" cy="' + y + '" r="3.5" fill="#7A2A38"/>';
+    });
+    svg.innerHTML = out;
+  }
+  buildRadar();
+
+  /* ---- Case study tab switcher ---- */
+  const caseTabs = document.querySelectorAll('.case-tab');
+  const casePanels = document.querySelectorAll('.case-panel');
+  caseTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      caseTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const idx = tab.dataset.case;
+      casePanels.forEach(panel => {
+        if(panel.dataset.casePanel === idx){
+          panel.hidden = false;
+        } else {
+          panel.hidden = true;
+        }
+      });
+    });
+  });
+
+  /* ---- Pipeline fill reveal ---- */
+  const pipelineFill = document.getElementById('pipelineFill');
+  if(pipelineFill){
+    const pipelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          pipelineFill.classList.add('filled');
+          pipelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    pipelineObserver.observe(document.getElementById('pipelineFlow'));
+  }
+
+  const radarSvg = document.getElementById('radarChart');
+  if(radarSvg){
+    const radarObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          radarSvg.classList.add('visible');
+          radarObserver.unobserve(radarSvg);
+        }
+      });
+    }, { threshold: 0.3 });
+    radarObserver.observe(radarSvg);
+  }
 </script>
 
 </body>
