@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarvesh Kumar Singh — Business Analyst &amp; Data Storyteller</title>
+<meta name="description" content="Sarvesh Kumar Singh — Business Analyst working across data, process, and delivery, open to business analysis, data analytics, and business management roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5EFE5;
+    --card:#FDFBF6;
+    --ink:#241A17;
+    --ink-soft:#6E5C51;
+    --line:#E3D7C7;
+    --accent:#7A2A38;
+    --accent-deep:#571E28;
+    --gold:#B07F2C;
+    --olive:#5C6440;
+    --taupe:#8C6F55;
+    --maxw:740px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Libre Franklin', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent); color:#fff;}
+  a{color:var(--accent);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  p{margin:0 0 1em 0;}
+  ul{margin:0; padding:0; list-style:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.6rem;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:rgba(245,239,229,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:calc(var(--maxw) + 3.2rem);
+    margin:0 auto;
+    padding:0.8rem 1.6rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+  }
+  .mark{
+    width:34px; height:34px;
+    background:var(--accent);
+    color:#fff;
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    flex:none;
+  }
+  .topbar-name{display:flex; align-items:center; gap:0.7rem;}
+  .topbar-name span{font-size:0.92rem; font-weight:500;}
+  .topbar nav{display:flex; gap:1.3rem; overflow-x:auto;}
+  .topbar nav a{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    text-decoration:none;
+    white-space:nowrap;
+    padding:0.2rem 0;
+    border-bottom:2px solid transparent;
+  }
+  .topbar nav a:hover, .topbar nav a.active{color:var(--ink); border-color:var(--accent);}
+  .topbar-cta{display:flex; gap:0.6rem; flex:none;}
+  .icon-btn{
+    width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    border-radius:7px;
+    color:var(--ink);
+    text-decoration:none;
+    flex:none;
+  }
+  .icon-btn:hover{border-color:var(--accent); color:var(--accent);}
+  .icon-btn svg{width:15px; height:15px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width:calc(var(--maxw) + 3.2rem);
+    margin:0 auto;
+    padding:4rem 1.6rem 3.2rem;
+    position:relative;
+    opacity:0; transform:translateY(16px);
+    animation:rise .75s ease forwards .05s;
+  }
+  @keyframes rise{to{opacity:1; transform:translateY(0);}}
+  .hero-blob{
+    position:absolute; top:-40px; right:-60px;
+    width:280px; height:280px;
+    background:radial-gradient(circle at 30% 30%, rgba(122,42,56,0.13), rgba(122,42,56,0) 70%);
+    z-index:-1;
+    pointer-events:none;
+  }
+  .hero h1{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(2.6rem, 6vw, 4.1rem);
+    line-height:1.04;
+    margin:0 0 1.1rem 0;
+    max-width:13.5em;
+    color:var(--ink);
+  }
+  .hero .lede{
+    font-size:1.14rem;
+    color:var(--ink-soft);
+    max-width:34em;
+    margin-bottom:1.7rem;
+  }
+  .chips{display:flex; flex-wrap:wrap; gap:0.55rem; margin-bottom:2rem;}
+  .chip{
+    font-size:0.82rem;
+    padding:0.4rem 0.85rem;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--card);
+  }
+  .cta-row{display:flex; gap:0.9rem; flex-wrap:wrap;}
+  .btn{
+    font-family:'Libre Franklin', sans-serif;
+    font-size:0.92rem;
+    font-weight:600;
+    padding:0.75rem 1.4rem;
+    border-radius:8px;
+    text-decoration:none;
+    display:inline-block;
+    border:1px solid transparent;
+    transition:transform .12s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--accent); color:#fff;}
+  .btn-primary:hover{background:var(--accent-deep); transform:translateY(-1px);}
+  .btn-secondary{background:transparent; color:var(--ink); border-color:var(--ink);}
+  .btn-secondary:hover{background:var(--ink); color:var(--paper); transform:translateY(-1px);}
+
+  /* ---------- Sections ---------- */
+  section{max-width:calc(var(--maxw) + 3.2rem); margin:0 auto; padding:3.4rem 1.6rem;}
+  section h2{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:1.9rem;
+    margin:0 0 1.5rem 0;
+  }
+  .divider{max-width:calc(var(--maxw) + 3.2rem); margin:0 auto; padding:0 1.6rem;}
+  .divider hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* About / pull quote */
+  .about{display:flex; gap:1.6rem;}
+  .about-rule{flex:none; width:3px; background:var(--accent); border-radius:2px;}
+  .about p{font-size:1.12rem; color:var(--ink); max-width:32em;}
+  .about p.soft{color:var(--ink-soft); font-size:1rem;}
+
+  /* Experience */
+  .job{padding:1.8rem 0; border-bottom:1px solid var(--line);}
+  .job:last-child{border-bottom:none; padding-bottom:0;}
+  .job-head{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;}
+  .job-head h3{font-size:1.2rem; margin:0; font-weight:600;}
+  .job-date{font-size:0.85rem; color:var(--ink-soft); white-space:nowrap;}
+  .job-org{font-size:0.92rem; color:var(--ink-soft); margin-top:0.3rem; margin-bottom:1rem;}
+  .job ul li{
+    position:relative; padding-left:1.1rem;
+    font-size:0.96rem; color:var(--ink-soft);
+    margin-bottom:0.55rem;
+  }
+  .job ul li::before{
+    content:"—"; position:absolute; left:0; top:0; color:var(--accent);
+  }
+  .badge{
+    display:inline-block; margin-top:1rem;
+    font-size:0.78rem; color:var(--olive);
+    background:rgba(92,100,64,0.12);
+    padding:0.3rem 0.65rem; border-radius:20px;
+  }
+
+  /* Skills */
+  .skill-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;}
+  .skill-card{
+    background:var(--card);
+    border-left:3px solid var(--c);
+    border-radius:6px;
+    padding:1.2rem 1.3rem;
+    box-shadow:0 1px 2px rgba(36,26,23,0.05);
+    transition:box-shadow .15s ease;
+  }
+  .skill-card:hover{box-shadow:0 3px 10px rgba(36,26,23,0.1);}
+  .skill-card h3{font-size:1rem; margin:0 0 0.4rem 0; font-weight:600;}
+  .skill-card p{font-size:0.9rem; color:var(--ink-soft); margin:0;}
+
+  /* Education */
+  .edu h3{font-size:1.1rem; font-family:'Libre Franklin',sans-serif; font-weight:600; margin:0 0 0.3rem 0;}
+  .edu .org{font-size:0.92rem; color:var(--ink-soft); margin-bottom:0.9rem;}
+  .edu .leadership{font-size:0.9rem; color:var(--ink-soft); max-width:36em;}
+  .langs{display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.5rem;}
+  .lang{font-size:0.88rem; color:var(--ink-soft);}
+  .lang strong{color:var(--ink);}
+
+  /* Certifications */
+  .cert-row{display:flex; justify-content:space-between; gap:1.2rem; padding:0.85rem 0; border-bottom:1px solid var(--line); font-size:0.92rem;}
+  .cert-row:first-child{border-top:1px solid var(--line);}
+  .cert-row .name{max-width:29em;}
+  .cert-row .meta{color:var(--ink-soft); font-size:0.85rem; white-space:nowrap; flex:none;}
+
+  /* Awards */
+  .award{display:flex; gap:0.8rem; margin-bottom:0.9rem;}
+  .award:last-child{margin-bottom:0;}
+  .award-dot{flex:none; width:7px; height:7px; border-radius:50%; background:var(--gold); margin-top:0.6em;}
+  .award p{margin:0; font-size:0.96rem; color:var(--ink-soft);}
+  .award strong{color:var(--ink);}
+
+  /* Build note */
+  .buildnote{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:1.6rem 1.8rem;
+  }
+  .buildnote h2{font-size:1.3rem; margin-bottom:0.7rem;}
+  .buildnote p{font-size:0.95rem; color:var(--ink-soft); margin-bottom:0.7rem;}
+  .buildnote p:last-child{margin-bottom:0;}
+
+  /* Contact / footer */
+  .contact{
+    background:var(--ink);
+    color:#F3ECE2;
+    margin-top:1rem;
+  }
+  .contact-inner{max-width:calc(var(--maxw) + 3.2rem); margin:0 auto; padding:3.6rem 1.6rem 2.4rem;}
+  .contact h2{color:#fff; font-size:2.1rem;}
+  .contact .lede{color:rgba(243,236,226,0.75); max-width:30em; font-size:1.02rem; margin-bottom:1.8rem;}
+  .contact-list{display:flex; flex-direction:column; gap:0.8rem;}
+  .contact-list a{
+    color:#F3ECE2; font-size:1.02rem; text-decoration:none;
+    display:flex; align-items:center; gap:0.7rem;
+  }
+  .contact-list a:hover{color:#fff; text-decoration:underline;}
+  .contact-list svg{flex:none; width:17px; height:17px; opacity:0.85;}
+  footer{
+    background:var(--ink); color:rgba(243,236,226,0.5);
+    font-size:0.78rem; text-align:left;
+    max-width:calc(var(--maxw) + 3.2rem); margin:0 auto;
+    padding:0 1.6rem 2rem;
+  }
+
+  @media (max-width:640px){
+    .about{flex-direction:column;}
+    .about-rule{width:100%; height:3px;}
+    .skill-grid{grid-template-columns:1fr;}
+    .job-head{flex-direction:column; gap:0.2rem;}
+    .cert-row{flex-direction:column; gap:0.2rem;}
+    .topbar-name span{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-name">
+        <div class="mark">S</div>
+        <span>Sarvesh Kumar Singh</span>
+      </div>
+      <nav aria-label="Section navigation">
+        <a href="#about" data-nav>About</a>
+        <a href="#experience" data-nav>Experience</a>
+        <a href="#skills" data-nav>Skills</a>
+        <a href="#education" data-nav>Education</a>
+        <a href="#certifications" data-nav>Certs</a>
+        <a href="#contact" data-nav>Contact</a>
+      </nav>
+      <div class="topbar-cta">
+        <a class="icon-btn" href="mailto:sarveshsingh0203@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1.5"/></svg>
+        </a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sarvesh-kumar-singh-699475266" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 014 0V17M12 17v-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero" id="top">
+    <div class="hero-blob"></div>
+    <h1>Structured thinker,<br>curious builder.</h1>
+    <p class="lede">I'm a Business Analyst who turns messy requirements, tickets, and spreadsheets into decisions people can act on. My background is in healthcare technology — but the toolkit (requirements analysis, stakeholder coordination, data reporting, process delivery) travels well, and I'm actively growing it into business analysis, data analytics, and broader business management work.</p>
+    <div class="chips">
+      <span class="chip">Business analysis</span>
+      <span class="chip">Data &amp; reporting</span>
+      <span class="chip">Process &amp; PMO delivery</span>
+      <span class="chip">Open to relocation</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:sarveshsingh0203@gmail.com">Email me</a>
+      <a class="btn btn-secondary" href="Sarvesh_Kumar_Singh_Business_Analyst_Resume.pdf" download>Download resume</a>
+    </div>
+  </div>
+
+  <div class="divider"><hr></div>
+
+  <section id="about" class="about">
+    <div class="about-rule"></div>
+    <div>
+      <p>I like taking something unclear — a vague requirement, a messy dataset, a broken process — and giving it shape: a clear ask, a clean report, a documented fix. That's been my day job in healthcare IT, and it's the same instinct I want to bring into new domains.</p>
+      <p class="soft">I'm early in my career and treat that as an advantage: I pick up new tools, systems, and industries quickly, and I'd rather learn a domain properly than fake familiarity with it. That curiosity is also why this site exists — more on that near the bottom.</p>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="experience">
+    <h2>Where I've worked</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Associate Analyst, Deloitte USI</h3>
+        <span class="job-date">Sept 2025 — Present</span>
+      </div>
+      <p class="job-org">Hyderabad, India · supporting a large-scale technology client</p>
+      <ul>
+        <li>Turn business and operational requirements into system configurations and process improvements, working directly with technical and business stakeholders.</li>
+        <li>Manage and resolve incoming ITSM tickets, keeping disruption to end users to a minimum.</li>
+        <li>Run structured workflow-level and UAT-style testing to confirm changes meet requirements before release.</li>
+        <li>Peer review configuration changes for quality, consistency, and adherence to standards.</li>
+        <li>Coordinate cross-environment migrations of build changes, using Excel and AI tools to speed up reporting and documentation.</li>
+      </ul>
+      <span class="badge">Two Spot Awards for performance and reliability</span>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Operations Intern, ReyNiKan Healthcare Pvt. Ltd.</h3>
+        <span class="job-date">Apr 2024 — Jul 2024</span>
+      </div>
+      <p class="job-org">Delhi, India</p>
+      <ul>
+        <li>Supported 10+ compliance audits, running structured gap assessments and preparing compliance reports.</li>
+        <li>Analyzed operational data to spot process gaps and recommended targeted efficiency improvements.</li>
+        <li>Worked directly with clients across 5+ on-site assessments, delivering tailored quality-improvement solutions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="skills">
+    <h2>What I bring</h2>
+    <div class="skill-grid">
+      <div class="skill-card" style="--c:var(--accent)">
+        <h3>Business &amp; data analysis</h3>
+        <p>Requirements gathering, reporting, and analysis using Excel, SQL, Power BI, and Python.</p>
+      </div>
+      <div class="skill-card" style="--c:var(--olive)">
+        <h3>Process, delivery &amp; PMO</h3>
+        <p>Process documentation, ITSM and incident management, UAT coordination, project and PMO support.</p>
+      </div>
+      <div class="skill-card" style="--c:var(--taupe)">
+        <h3>Stakeholders &amp; communication</h3>
+        <p>Cross-functional coordination, client-facing collaboration, and adapting quickly across teams and domains.</p>
+      </div>
+      <div class="skill-card" style="--c:var(--gold)">
+        <h3>AI-augmented workflow</h3>
+        <p>Claude Skills and Claude Cowork, used daily to speed up analysis, testing, and documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="education" class="edu">
+    <h2>Education</h2>
+    <h3>Bachelor of Business Administration — Healthcare Management</h3>
+    <p class="org">Amity Institute of Public Health and Hospital Administration, Amity University · 2022 – 2025</p>
+    <p class="leadership">Leadership: Batch Representative; Student Coordinator (Alumni Relations); Organizing Committee Coordinator; Industrial Visit Coordinator, Jaypee Hospital, Noida.</p>
+    <div class="langs">
+      <span class="lang"><strong>English</strong> — full professional</span>
+      <span class="lang"><strong>Hindi</strong> — native / bilingual</span>
+      <span class="lang"><strong>French</strong> — elementary</span>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="cert-row"><span class="name">Claude CCAO-F Certified; AI Fluency Framework &amp; Foundations; Claude Code in Action; Claude Code 101; Claude 101</span><span class="meta">Anthropic, 2026</span></div>
+    <div class="cert-row"><span class="name">Business Analytics</span><span class="meta">NSDC / IIT-Madras Pravartak, 2025</span></div>
+    <div class="cert-row"><span class="name">Intro to Project Management: Principles &amp; Practices</span><span class="meta">QCI-NABET, 2024</span></div>
+    <div class="cert-row"><span class="name">Project Management Job Simulation</span><span class="meta">Accenture North America (Forage), 2024</span></div>
+    <div class="cert-row"><span class="name">Revenue Cycle &amp; Healthcare Finance; CompTIA Healthcare IT</span><span class="meta">Udemy, 2025</span></div>
+    <div class="cert-row"><span class="name">Services Marketing: A Practical Approach</span><span class="meta">NPTEL, IIT Kharagpur, 2025</span></div>
+    <div class="cert-row"><span class="name">Healthcare 4.0 — Healthcare in the Industry 4.0</span><span class="meta">LinkedIn Learning</span></div>
+    <div class="cert-row"><span class="name">Medical Image Analysis</span><span class="meta">LinkedIn Learning</span></div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="awards">
+    <h2>Awards &amp; activities</h2>
+    <div class="award"><span class="award-dot"></span><p><strong>Gold Medal for Academic Performance</strong> — Amity University</p></div>
+    <div class="award"><span class="award-dot"></span><p><strong>Spot Award, ×2</strong> — Deloitte USI</p></div>
+    <div class="award"><span class="award-dot"></span><p><strong>Organizing team</strong> — Apollo Hospitals 12th International Patient Safety Conference, 2025</p></div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <section id="buildnote">
+    <div class="buildnote">
+      <h2>How this site came together</h2>
+      <p>I don't come from a coding background. This site was designed and built with Claude, working from my resume and a lot of back-and-forth on what to keep, cut, and say differently.</p>
+      <p>I'm low-code / no-code by training, but I like learning new tools quickly and going from "I don't know how" to "I shipped it." That's the same approach I bring to a new system, process, or industry at work — figure out the shape of the problem, then get to a working result.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+      <h2>Let's talk</h2>
+      <p class="lede">I'm open to business analyst, data analyst, and PMO / project coordination roles across industries, and happy to relocate.</p>
+      <div class="contact-list">
+        <a href="mailto:sarveshsingh0203@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1.5"/></svg>
+          sarveshsingh0203@gmail.com
+        </a>
+        <a href="tel:+918383995470">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8a15.7 15.7 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 9 9 0 002.8.45 1 1 0 011 1V20a1 1 0 01-1 1C10.6 21 3 13.4 3 4a1 1 0 011-1h3.3a1 1 0 011 1 9 9 0 00.45 2.8 1 1 0 01-.25 1z"/></svg>
+          +91 83839 95470
+        </a>
+        <a href="https://www.linkedin.com/in/sarvesh-kumar-singh-699475266" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2 2 0 014 0V17M12 17v-7"/></svg>
+          linkedin.com/in/sarvesh-kumar-singh-699475266
+        </a>
+      </div>
+    </div>
+  </section>
+  <footer>Sarvesh Kumar Singh · Hyderabad, India</footer>
+
+<script>
+  const links = document.querySelectorAll('.topbar nav a[data-nav]');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = '#' + entry.target.id;
+      const link = document.querySelector('.topbar nav a[href="' + id + '"]');
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  sections.forEach(s => s && observer.observe(s));
+</script>
+
+</body>
+</html>
