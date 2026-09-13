@@ -20,7 +20,7 @@
     --gold:#B07F2C;
     --olive:#5C6440;
     --taupe:#8C6F55;
-    --maxw:740px;
+    --maxw:920px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -68,7 +68,7 @@
   }
   .topbar-name{display:flex; align-items:center; gap:0.7rem;}
   .topbar-name span{font-size:0.92rem; font-weight:500;}
-  .topbar nav{display:flex; gap:1.3rem; overflow-x:auto;}
+  .topbar nav{display:flex; gap:1.1rem; overflow-x:auto;}
   .topbar nav a{
     font-size:0.85rem;
     color:var(--ink-soft);
@@ -250,9 +250,21 @@
   }
 
   /* Skills */
-  .skill-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;}
+  .skill-grid{
+    display:flex;
+    gap:1.1rem;
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    padding-bottom:0.4rem;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .skill-grid::-webkit-scrollbar{display:none; height:0;}
   .skill-card{
+    flex:0 0 250px;
+    scroll-snap-align:start;
     background:var(--card);
+    border:1px solid var(--line);
     border-left:3px solid var(--c);
     border-radius:6px;
     padding:1.2rem 1.3rem;
@@ -369,7 +381,7 @@
   @media (max-width:640px){
     .about{flex-direction:column;}
     .about-rule{width:100%; height:3px;}
-    .skill-grid{grid-template-columns:1fr;}
+    .skill-card{flex:0 0 220px;}
     .job-head{flex-direction:column; gap:0.2rem;}
     .cert-row{flex-direction:column; gap:0.2rem;}
     .topbar-name span{display:none;}
@@ -546,15 +558,6 @@
     transition:box-shadow .15s ease, transform .15s ease;
   }
   .cert-card:hover{box-shadow:0 4px 14px rgba(36,26,23,0.09); transform:translateY(-2px);}
-  .cert-icon{
-    width:26px; height:26px;
-    border-radius:6px;
-    background:var(--c);
-    color:#fff;
-    display:flex; align-items:center; justify-content:center;
-    font-size:0.72rem; font-weight:700;
-    margin-bottom:0.7rem;
-  }
   .cert-card .name{display:block; font-size:0.9rem; font-weight:500; margin-bottom:0.35rem; line-height:1.4;}
   .cert-card .meta{display:block; font-size:0.8rem; color:var(--ink-soft);}
 
@@ -838,6 +841,10 @@
           <h3>AI-augmented workflow</h3>
           <p>Claude Skills and Claude Cowork, used daily to speed up analysis, testing, and documentation.</p>
         </div>
+        <div class="skill-card" style="--c:var(--olive)" data-roles="ba pmo">
+          <h3>Healthcare domain &amp; compliance</h3>
+          <p>NABH compliance knowledge, structured gap assessments, and translating clinical and operational needs into system requirements.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -862,52 +869,42 @@
     <h2>Certifications</h2>
     <div class="cert-grid">
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--accent)">A</div>
         <span class="name"><a class="cert-link ack-check" href="https://www.credly.com/badges/42c7517a-7406-4537-914d-71b2f0fda765" target="_blank" rel="noopener">Claude CCAO-F Certified; AI Fluency Framework &amp; Foundations; Claude Code in Action; Claude Code 101; Claude 101</a></span>
         <span class="meta">Anthropic, 2026</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--gold)">N</div>
         <span class="name"><a class="cert-link ack-check" href="https://admin.skillindiadigital.gov.in/documentverificationbyQR?content=P0NhbmRpZGF0ZSBOYW1lID0gU0FSVkVTSCBLVU1BUiBTSU5HSCYmQ2FuZGlkYXRlIElkID0gQ0FOXzM3MTYwNDQ0JiZUUCBJZCA9IFRQMTY3NjIxJiZUQyBOYW1lID0gSU5URVJOU0hBTEEgVFJBSU5JTkdTJiZCYXRjaElkID0gMzMxNTAwNyYmRG9jdW1lbnQgSUQgPSBKTFAwNlJRNVBBTE1RNlpFJiZUQyBBZGRyZXNzID0gQi02MTAmJlVOSVRFQ0ggQlVTSU5FU1MgWk9ORSYmU09VVEggQ0lUWSBJSSYmU0VDLTUwLTEyMjAxOC4mJkRvY3VtZW50ID0gY2VydGlmaWNhdGUmJklzc3VhbmNlIERhdGUgPSAwNi8wNS8yMDI1" target="_blank" rel="noopener">Business Analytics</a></span>
         <span class="meta">NSDC / IIT-Madras Pravartak, 2025</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--olive)">Q</div>
         <span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=27630%7CCR1142&frm=admin&qrscan=true" target="_blank" rel="noopener">Intro to Project Management: Principles &amp; Practices</a></span>
         <span class="meta">QCI-NABET, 2024</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--taupe)">U</div>
         <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-d663df8a-343f-4786-be8e-6de799932ca8/" target="_blank" rel="noopener">Revenue Cycle and Healthcare Finance — Rev Cycle Ready</a></span>
         <span class="meta">Udemy, Sep 2025</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--accent)">U</div>
         <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-b7e49f1a-c0f5-470d-94f3-79b510714361/" target="_blank" rel="noopener">CompTIA Healthcare IT</a></span>
         <span class="meta">Udemy, Sep 2025</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--gold)">U</div>
         <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-edf16d32-d895-4f98-a549-7b10d2788caf/" target="_blank" rel="noopener">Certified Electronic Health Records Specialist</a></span>
         <span class="meta">Udemy, Sep 2025</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--olive)">N</div>
         <span class="name"><a class="cert-link ack-check" href="https://nptel.ac.in/noc/E_Certificate/NPTEL25MG58S63410196801383268" target="_blank" rel="noopener">Services Marketing: A Practical Approach</a></span>
         <span class="meta">NPTEL, IIT Kharagpur, 2025</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--taupe)">U</div>
         <span class="name"><a class="cert-link ack-check" href="https://www.udemy.com/certificate/UC-481a0bb5-0689-476d-be83-2238f6b1e468/" target="_blank" rel="noopener">Healthcare 4.0 — Healthcare in the Industry 4.0</a></span>
         <span class="meta">Udemy, Sep 2025</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--accent)">Q</div>
         <span class="name"><a class="cert-link ack-check" href="https://pathshala.qcin.org/onlycertificate.aspx?certsno=21449%7CCR1215&frm=admin&qrscan=true" target="_blank" rel="noopener">Programme on Implementation of NABH Standards for Hospitals</a></span>
         <span class="meta">QCI</span>
       </div>
       <div class="cert-card">
-        <div class="cert-icon" style="--c:var(--taupe)">E</div>
         <span class="name">EP**C</span>
         <span class="meta">Dec 2025</span>
       </div>
